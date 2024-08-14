@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Mart Sales Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #5ad4be;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: auto;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 350px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        h1 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            color: #333;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        label {
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+        input {
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        input:focus {
+            border-color: #007bff;
+        }
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #ffffff;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .prediction {
+            margin-top: 10px;
+            font-size: 1em;
+            color: hsl(13, 78%, 67%);
+            text-align: center;
+        }
+        .footer {
+            margin-top: 10px;
+            font-size: 0.8em;
+            color: #777;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Big Mart Sales Prediction</h1>
+        <form method="POST" action="/predict">
+            <label for="item_identifier">Item Identifier</label>
+            <input type="number" name="item_identifier" required>
+
+            <label for="item_weight">Item Weight</label>
+            <input type="number" step="0.1" name="item_weight" required>
+
+            <label for="item_fat_content">Item Fat Content</label>
+            <input type="number" name="item_fat_content" required>
+
+            <label for="item_visibility">Item Visibility</label>
+            <input type="number" step="0.0001" name="item_visibility" required>
+
+            <label for="item_type">Item Type</label>
+            <input type="number" name="item_type" required>
+
+            <label for="item_mrp">Item MRP</label>
+            <input type="number" step="0.01" name="item_mrp" required>
+
+            <label for="outlet_identifier">Outlet Identifier</label>
+            <input type="number" name="outlet_identifier" required>
+
+            <label for="outlet_establishment_year">Outlet Establishment Year</label>
+            <input type="number" name="outlet_establishment_year" required>
+
+            <label for="outlet_size">Outlet Size</label>
+            <input type="number" name="outlet_size" required>
+
+            <label for="outlet_location_type">Outlet Location Type</label>
+            <input type="number" name="outlet_location_type" required>
+
+            <label for="outlet_type">Outlet Type</label>
+            <input type="number" name="outlet_type" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+        <div class="prediction">
+            <p>{{ prediction }}</p>
+        </div>
+        {% endif %}
+        <div class="footer">
+            <p>Created by Nithilan</p>
+        </div>
+    </div>
+</body>
+</html>
